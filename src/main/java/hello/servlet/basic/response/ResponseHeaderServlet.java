@@ -16,7 +16,7 @@ public class ResponseHeaderServlet extends HttpServlet {
         //[status-line]
         response.setStatus(HttpServletResponse.SC_OK);
         //[response-headers]
- //       response.setHeader("Content-type","text/plain;charset=utf-8");
+        //       response.setHeader("Content-type","text/plain;charset=utf-8");
         response.setHeader("Cache-Control","no-cache,no-store,must-revalidate");
         response.setHeader("Pragma","no-cache");
         response.setHeader("my-header","hello");

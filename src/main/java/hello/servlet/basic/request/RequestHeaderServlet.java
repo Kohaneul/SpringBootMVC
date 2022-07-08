@@ -18,6 +18,7 @@ public class RequestHeaderServlet extends HttpServlet {
         printHeaders(request);
         printHeaderUtils(request);
         printEtc(request);
+
     }
 
     private void printStartLine(HttpServletRequest request) {
@@ -46,7 +47,6 @@ public class RequestHeaderServlet extends HttpServlet {
 //            String headerName = headerNames.nextElement();
 //            System.out.println("headerName = " + headerName);
 //        }
-
         request.getHeaderNames().asIterator().forEachRemaining(
                 headerName-> System.out.println(headerName +" : " + headerName));
         request.getHeader("host");
