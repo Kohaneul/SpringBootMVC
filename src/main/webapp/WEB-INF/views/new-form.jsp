@@ -7,7 +7,7 @@
 
 </head>
 <body>
-<form action="save" method="post">  //save : 상대경로 사용
+<form action="save" method="post">
  username: <input type="text" name="username" />
  age: <input type="text" name="age" />
  <input type="submit" value="전송"/>
