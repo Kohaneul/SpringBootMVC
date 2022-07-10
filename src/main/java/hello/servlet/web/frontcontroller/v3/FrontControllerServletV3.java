@@ -15,6 +15,10 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+
+
+
+
 @WebServlet(name="frontControllerServletV3",urlPatterns = "/front-controller/v3/*")
 public class FrontControllerServletV3 extends HttpServlet {
     private Map<String, ControllerV3> controllerMap = new HashMap<>();
@@ -45,10 +49,10 @@ public class FrontControllerServletV3 extends HttpServlet {
         //new-form
         String viewName = mv.getViewName();//논리이름
         MyView myView = viewResolver(viewName);
-        myView.render(mv.getModel(),request,response);
+        myView.render(mv.getModel(),request,response);  //모델정보 넘겨주면 다꺼내서 setattribute에 다 넣음
     }
 
-    private MyView viewResolver(String viewName) {
+    private MyView viewResolver(String viewName) {  //논리이름을 물리이름으로 반환
         return new MyView("/WEB-INF/views/" + viewName + ".jsp");
     }
 
