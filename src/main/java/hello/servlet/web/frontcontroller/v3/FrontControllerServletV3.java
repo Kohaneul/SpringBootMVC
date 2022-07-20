@@ -1,5 +1,6 @@
 package hello.servlet.web.frontcontroller.v3;
 
+import hello.servlet.domain.member.MemberRepository;
 import hello.servlet.web.frontcontroller.ModelView;
 import hello.servlet.web.frontcontroller.MyView;
 import hello.servlet.web.frontcontroller.v3.controller.MemberFormControllerV3;
@@ -14,9 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
-
-
 
 
 @WebServlet(name="frontControllerServletV3",urlPatterns = "/front-controller/v3/*")
@@ -45,8 +43,7 @@ public class FrontControllerServletV3 extends HttpServlet {
         Map<String, String> paramMap = createParamMap(request);
         //모든 파라미터 이름을 다 가져와서 iterator로 돌려서 paramName에 다 집어넣음
         ModelView mv = controllerV3.process(paramMap);
-
-        //new-form
+        //논리이름 : new-form 이름
         String viewName = mv.getViewName();//논리이름
         MyView myView = viewResolver(viewName);
         myView.render(mv.getModel(),request,response);  //모델정보 넘겨주면 다꺼내서 setattribute에 다 넣음
