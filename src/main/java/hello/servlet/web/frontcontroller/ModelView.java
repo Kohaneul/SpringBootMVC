@@ -12,8 +12,6 @@ public class ModelView {
     private Map<String,Object> model = new HashMap<>();
     public ModelView(String viewName){
         this.viewName = viewName;
-
-
     }
 }
 

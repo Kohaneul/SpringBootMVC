@@ -14,7 +14,8 @@ import java.util.Map;
 
 
 public class MemberListControllerV3 implements ControllerV3{
-    private MemberRepository memberRepository = MemberRepository.getInstnace();
+
+        private MemberRepository memberRepository = MemberRepository.getInstnace();
     @Override
     public ModelView process(Map<String, String> paramMap) {
         List<Member> members = memberRepository.findAll();

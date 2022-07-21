@@ -1,6 +1,7 @@
 package hello.servlet.web.frontcontroller;
 
 import lombok.Data;
+import org.springframework.web.servlet.DispatcherServlet;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,9 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
-
-
 
 
 
@@ -30,6 +28,8 @@ public class MyView {
         RequestDispatcher dispatcher = request.getRequestDispatcher(viewPath);
         dispatcher.forward(request,response);
     }
+
+
 
 
     public void render(Map<String,Object> model,HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
