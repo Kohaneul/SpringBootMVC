@@ -14,7 +14,7 @@ import java.util.List;
 
 @WebServlet(name="memberListServlet",urlPatterns = "/servlet/members")
 public class MemberListServlet extends HttpServlet {
-    private MemberRepository memberRepository = MemberRepository.getInstnace();
+    private MemberRepository memberRepository = MemberRepository.getInstance();
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Member> members = memberRepository.findAll();

@@ -12,7 +12,7 @@ import java.io.PrintWriter;
 
 @WebServlet(name="memberServlet",urlPatterns = "/servlet/members/new-form")
 public class MemberFormServlet extends HttpServlet {
-    private MemberRepository memberRepository = MemberRepository.getInstnace();
+    private MemberRepository memberRepository = MemberRepository.getInstance();
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

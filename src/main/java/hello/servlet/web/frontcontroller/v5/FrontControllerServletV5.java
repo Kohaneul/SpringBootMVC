@@ -20,51 +20,46 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import java.util.*;
 
 
 @WebServlet(name="frontControllerServletV5",urlPatterns = "/front-controller/v5/*")
 public class FrontControllerServletV5 extends HttpServlet {
 
-
-
-    private final Map<String,Object> handlerMappingMap = new HashMap<>();
+    private final Map<String, Object> handlerMappingMap = new HashMap<>();
     private final List<MyHandlerAdapter> handlerAdapters = new ArrayList<>();
-        public FrontControllerServletV5(){
-            initHandlerMappingMap();
-            initHandlerAdapters();
-        }
-        public void initHandlerMappingMap(){
-            handlerMappingMap.put("/front-controller/v5/v3/members/new-form",new MemberFormControllerV3());
-            handlerMappingMap.put("/front-controller/v5/v3/members/save",new MemberSaveControllerV3());
-            handlerMappingMap.put("/front-controller/v5/v3/members",new MemberListControllerV3());
 
-            //V4추가
-            handlerMappingMap.put("/front-controller/v5/v4/members/new-form",new MemberFormControllerV4());
-            handlerMappingMap.put("/front-controller/v5/v4/members/save",new MemberSaveControllerV4());
-            handlerMappingMap.put("/front-controller/v5/v4/members",new MemberListControllerV4());
-        }
+    public FrontControllerServletV5() {
+        initHandlerMappingMap();
+        initHandlerAdapters();
+    }
 
-        public void initHandlerAdapters(){
-            handlerAdapters.add(new ControllerV3HandlerAdapter());
-            handlerAdapters.add(new ControllerV4HandlerAdapter());
+    public void initHandlerMappingMap() {
+        handlerMappingMap.put("/front-controller/v5/v3/members/new-form", new MemberFormControllerV3());
+        handlerMappingMap.put("/front-controller/v5/v3/members/save", new MemberSaveControllerV3());
+        handlerMappingMap.put("/front-controller/v5/v3/members", new MemberListControllerV3());
 
-        }
+        //V4추가
+        handlerMappingMap.put("/front-controller/v5/v4/members/new-form", new MemberFormControllerV4());
+        handlerMappingMap.put("/front-controller/v5/v4/members/save", new MemberSaveControllerV4());
+        handlerMappingMap.put("/front-controller/v5/v4/members", new MemberListControllerV4());
+    }
 
+    public void initHandlerAdapters() {
+        handlerAdapters.add(new ControllerV3HandlerAdapter());
+        handlerAdapters.add(new ControllerV4HandlerAdapter());
+
+    }
 
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Object handler = getHandler(request);
-        System.out.println(handler);
-        if(handler==null){
+        if (handler == null) {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
+
         MyHandlerAdapter adapter = getHandlerAdapters(handler);
         ModelView mv = adapter.handle(request, response, handler);
         String viewName = mv.getViewName();

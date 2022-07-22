@@ -15,7 +15,7 @@ import java.io.PrintWriter;
 
 @WebServlet(name="memberSaveServlet",urlPatterns = "/servlet/members/save")
 public class MemberSaveServlet extends HttpServlet {
-    private MemberRepository memberRepository = MemberRepository.getInstnace();
+    private MemberRepository memberRepository = MemberRepository.getInstance();
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("MemberSaveServlet.service");

@@ -18,7 +18,7 @@ public class MemberRepository {
 
     private static final MemberRepository instance= new MemberRepository();  //싱글톤으로 생성
 
-    public static MemberRepository getInstnace(){
+    public static MemberRepository getInstance(){
         return instance;
     }
     //싱글톤일때는 private로 생성자 설정하여 아무나 생성하지 못하도록 막아줌

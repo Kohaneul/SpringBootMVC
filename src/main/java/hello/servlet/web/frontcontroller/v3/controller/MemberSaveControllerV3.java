@@ -16,7 +16,7 @@ import java.util.Set;
 public class MemberSaveControllerV3 implements ControllerV3 {
 
 
-    private MemberRepository memberRepository = MemberRepository.getInstnace();
+    private MemberRepository memberRepository = MemberRepository.getInstance();
 
     @Override
     public ModelView process(Map<String, String> paramMap) {

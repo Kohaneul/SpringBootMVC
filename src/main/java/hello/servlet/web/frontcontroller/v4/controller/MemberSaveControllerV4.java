@@ -8,7 +8,7 @@ import java.util.Map;
 
 
 public class MemberSaveControllerV4 implements ControllerV4 {
-    private final MemberRepository memberRepository = MemberRepository.getInstnace();
+    private final MemberRepository memberRepository = MemberRepository.getInstance();
 
     @Override
     public String process(Map<String, String> paramMap, Map<String, Object> model) {
